@@ -37,14 +37,12 @@ class RoomCubit extends Cubit<RoomState> {
   submit({
     required String identity,
     required String roomName,
-    required String maxDuration,
   }) async {
     emit(RoomLoading());
     try {
       final twilioRoomTokenResponse = await backendService.createToken(
         identity: identity,
         roomName: roomName,
-        maxDuration: maxDuration,
       );
       final token = twilioRoomTokenResponse['accessToken'];
 

@@ -96,31 +96,6 @@ class _JoinRoomPageState extends State<JoinRoomPage> {
                       const SizedBox(
                         height: 16,
                       ),
-                      DropdownButtonFormField<int>(
-                        value: selectedNumber,
-                        hint: Text('Select a number'),
-                        icon: Row(
-                          children: [
-                            Text("In Second"),
-                            Icon(Icons.arrow_drop_down_outlined),
-                          ],
-                        ),
-                        items: [10, 20, 30, 40, 50, 60].map((int value) {
-                          return DropdownMenuItem<int>(
-                            value: value,
-                            child: Text('$value'),
-                          );
-                        }).toList(),
-                        onChanged: (int? newValue) {
-                          if (newValue == null) return;
-                          setState(() {
-                            selectedNumber = newValue;
-                          });
-                        },
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
                       if (isLoading == true)
                         LinearProgressIndicator()
                       else
@@ -129,7 +104,6 @@ class _JoinRoomPageState extends State<JoinRoomPage> {
                             await bloc.submit(
                               identity: _identityController.text.trim(),
                               roomName: _roomNameController.text.trim(),
-                              maxDuration: selectedNumber.toString(),
                             );
                           },
                           child: Text('Enter the room'),

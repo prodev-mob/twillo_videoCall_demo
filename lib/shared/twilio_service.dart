@@ -14,7 +14,6 @@ class TwilioFunctionsService {
   Future<Map<String, dynamic>> createToken({
     required String identity,
     required String roomName,
-    required String maxDuration,
   }) async {
     try {
       Map<String, String> header = {
